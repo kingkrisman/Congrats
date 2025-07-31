@@ -38,14 +38,21 @@ export default function Index() {
     <div className="min-h-screen bg-ordination-white">
       {/* Header Section */}
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `linear-gradient(45deg, rgba(218, 165, 32, 0.3), rgba(255, 215, 0, 0.4)), 
-                             url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23f5f5dc;stop-opacity:1" /><stop offset="100%" style="stop-color:%23ffd700;stop-opacity:0.8" /></linearGradient></defs><rect width="1200" height="800" fill="url(%23grad)"/><circle cx="200" cy="150" r="80" fill="rgba(255,255,255,0.1)"/><circle cx="800" cy="200" r="120" fill="rgba(255,255,255,0.08)"/><circle cx="1000" cy="600" r="100" fill="rgba(255,255,255,0.12)"/></svg>')`
-          }}
-        />
+        {/* Background Images Slideshow */}
+        {ordinationImages.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{
+              backgroundImage: `linear-gradient(45deg, rgba(218, 165, 32, 0.6), rgba(255, 215, 0, 0.7)), url('${image}')`
+            }}
+          />
+        ))}
+
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black bg-opacity-30" />
         
         {/* Content */}
         <div className={`relative z-10 text-center px-6 max-w-4xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
