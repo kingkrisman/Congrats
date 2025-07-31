@@ -95,12 +95,19 @@ export default function Index() {
     setGalleryImageIndex((prevIndex) =>
       (prevIndex + 1) % galleryImages.length
     );
+    resetGalleryInterval();
   };
 
   const prevGalleryImage = () => {
     setGalleryImageIndex((prevIndex) =>
       prevIndex === 0 ? galleryImages.length - 1 : prevIndex - 1
     );
+    resetGalleryInterval();
+  };
+
+  const selectGalleryImage = (index: number) => {
+    setGalleryImageIndex(index);
+    resetGalleryInterval();
   };
 
   return (
