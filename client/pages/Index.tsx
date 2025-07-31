@@ -4,7 +4,9 @@ export default function Index() {
   const [isVisible, setIsVisible] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [galleryImageIndex, setGalleryImageIndex] = useState(0);
-  const [galleryInterval, setGalleryInterval] = useState<NodeJS.Timeout | null>(null);
+  const [galleryInterval, setGalleryInterval] = useState<NodeJS.Timeout | null>(
+    null,
+  );
   const [scrollImageIndex, setScrollImageIndex] = useState(0);
   const [showConfetti, setShowConfetti] = useState(false);
 
@@ -14,7 +16,7 @@ export default function Index() {
     "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F6852d88a060c4755a95a63f8bbafef80?format=webp&width=800",
     "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F26b4938cf1ec497d8fafaafafdcc682a?format=webp&width=800",
     "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F83ed3c26efdb41a1be330dc4f4f78b41?format=webp&width=800",
-    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F73ef989db23f496bb3bbaed6c8f97003?format=webp&width=800"
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F73ef989db23f496bb3bbaed6c8f97003?format=webp&width=800",
   ];
 
   const galleryImages = [
@@ -40,7 +42,7 @@ export default function Index() {
     "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F97fcc01bee3c43b48dadc84dc0adf031?format=webp&width=800",
     "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Ffd1a103d7df4424694ce219a59274d01?format=webp&width=800",
     "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Ffc096ad2bc7f4b46979f2283a15202ab?format=webp&width=800",
-    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F10fd279e6e094e0e8ad266c9b8781a54?format=webp&width=800"
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F10fd279e6e094e0e8ad266c9b8781a54?format=webp&width=800",
   ];
 
   const scrollSectionImages = [
@@ -59,7 +61,7 @@ export default function Index() {
     "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F59122a3253b14ffda22fa41e3e9874a5?format=webp&width=800",
     "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Fd771d0c3042c4cccbf15dadda97eec05?format=webp&width=800",
     "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Fd226b5d7fd6146e09bd40932bfb50014?format=webp&width=800",
-    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Ff582c648ed9145f0b1670a7ad90d6e8e?format=webp&width=800"
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Ff582c648ed9145f0b1670a7ad90d6e8e?format=webp&width=800",
   ];
 
   useEffect(() => {
@@ -73,8 +75,8 @@ export default function Index() {
 
     // Set up image rotation every 2 seconds
     const imageInterval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) =>
-        (prevIndex + 1) % ordinationImages.length
+      setCurrentImageIndex(
+        (prevIndex) => (prevIndex + 1) % ordinationImages.length,
       );
     }, 2000);
 
@@ -87,8 +89,8 @@ export default function Index() {
   useEffect(() => {
     // Set up auto-scroll for gallery every 5 seconds
     const interval = setInterval(() => {
-      setGalleryImageIndex((prevIndex) =>
-        (prevIndex + 1) % galleryImages.length
+      setGalleryImageIndex(
+        (prevIndex) => (prevIndex + 1) % galleryImages.length,
       );
     }, 5000);
 
@@ -102,7 +104,7 @@ export default function Index() {
   useEffect(() => {
     // Set up scroll listener for scroll section
     const handleScroll = () => {
-      const scrollSection = document.getElementById('scroll-section');
+      const scrollSection = document.getElementById("scroll-section");
       if (!scrollSection) return;
 
       const rect = scrollSection.getBoundingClientRect();
@@ -115,12 +117,16 @@ export default function Index() {
       const scrollProgress = Math.max(0, Math.min(1, scrollStart / scrollEnd));
 
       // Calculate which image to show based on scroll progress
-      const imageIndex = Math.floor(scrollProgress * (scrollSectionImages.length - 1));
-      setScrollImageIndex(Math.max(0, Math.min(scrollSectionImages.length - 1, imageIndex)));
+      const imageIndex = Math.floor(
+        scrollProgress * (scrollSectionImages.length - 1),
+      );
+      setScrollImageIndex(
+        Math.max(0, Math.min(scrollSectionImages.length - 1, imageIndex)),
+      );
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [scrollSectionImages.length]);
 
   const resetGalleryInterval = () => {
@@ -129,8 +135,8 @@ export default function Index() {
     }
 
     const newInterval = setInterval(() => {
-      setGalleryImageIndex((prevIndex) =>
-        (prevIndex + 1) % galleryImages.length
+      setGalleryImageIndex(
+        (prevIndex) => (prevIndex + 1) % galleryImages.length,
       );
     }, 5000);
 
@@ -142,19 +148,17 @@ export default function Index() {
     "A ministry filled with light, love, and lasting impact",
     "A heart that continues to burn for God",
     "A life that inspires faith in others",
-    "Favor in every season, grace in every step"
+    "Favor in every season, grace in every step",
   ];
 
   const nextGalleryImage = () => {
-    setGalleryImageIndex((prevIndex) =>
-      (prevIndex + 1) % galleryImages.length
-    );
+    setGalleryImageIndex((prevIndex) => (prevIndex + 1) % galleryImages.length);
     resetGalleryInterval();
   };
 
   const prevGalleryImage = () => {
     setGalleryImageIndex((prevIndex) =>
-      prevIndex === 0 ? galleryImages.length - 1 : prevIndex - 1
+      prevIndex === 0 ? galleryImages.length - 1 : prevIndex - 1,
     );
     resetGalleryInterval();
   };
@@ -173,9 +177,13 @@ export default function Index() {
             <div
               key={i}
               className={`absolute w-3 h-3 animate-pulse ${
-                i % 4 === 0 ? 'bg-ordination-gold' :
-                i % 4 === 1 ? 'bg-red-500' :
-                i % 4 === 2 ? 'bg-blue-500' : 'bg-green-500'
+                i % 4 === 0
+                  ? "bg-ordination-gold"
+                  : i % 4 === 1
+                    ? "bg-red-500"
+                    : i % 4 === 2
+                      ? "bg-blue-500"
+                      : "bg-green-500"
               }`}
               style={{
                 left: `${Math.random() * 100}%`,
@@ -183,7 +191,7 @@ export default function Index() {
                 animationDelay: `${Math.random() * 2}s`,
                 animationDuration: `${3 + Math.random() * 2}s`,
                 transform: `rotate(${Math.random() * 360}deg)`,
-                animation: `confetti-fall ${3 + Math.random() * 2}s ease-out forwards`
+                animation: `confetti-fall ${3 + Math.random() * 2}s ease-out forwards`,
               }}
             />
           ))}
@@ -198,7 +206,7 @@ export default function Index() {
                 top: `-50px`,
                 animationDelay: `${Math.random() * 3}s`,
                 animationDuration: `${4 + Math.random() * 2}s`,
-                animation: `confetti-fall ${4 + Math.random() * 2}s ease-out forwards`
+                animation: `confetti-fall ${4 + Math.random() * 2}s ease-out forwards`,
               }}
             >
               ❤️
@@ -215,10 +223,10 @@ export default function Index() {
                 top: `-50px`,
                 animationDelay: `${Math.random() * 2.5}s`,
                 animationDuration: `${3.5 + Math.random() * 1.5}s`,
-                animation: `confetti-fall ${3.5 + Math.random() * 1.5}s ease-out forwards`
+                animation: `confetti-fall ${3.5 + Math.random() * 1.5}s ease-out forwards`,
               }}
             >
-              {i % 3 === 0 ? '🎉' : i % 3 === 1 ? '✨' : '🙏'}
+              {i % 3 === 0 ? "🎉" : i % 3 === 1 ? "✨" : "🙏"}
             </div>
           ))}
         </div>
@@ -231,19 +239,21 @@ export default function Index() {
           <div
             key={index}
             className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
-              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+              index === currentImageIndex ? "opacity-100" : "opacity-0"
             }`}
             style={{
-              backgroundImage: `url('${image}')`
+              backgroundImage: `url('${image}')`,
             }}
           />
         ))}
 
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-black bg-opacity-30" />
-        
+
         {/* Content */}
-        <div className={`relative z-10 text-center px-6 max-w-5xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div
+          className={`relative z-10 text-center px-6 max-w-5xl mx-auto transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
           {/* Decorative crown icon */}
           <div className="mb-6">
             <div className="inline-flex items-center justify-center w-24 h-24 bg-white rounded-full shadow-2xl mb-4 p-2">
@@ -280,7 +290,8 @@ export default function Index() {
               From Your Loving Wife
             </p>
             <blockquote className="font-body text-lg md:text-xl text-white/90 italic leading-relaxed">
-              "My Crown, you are God's chosen vessel—<br className="hidden md:block" />
+              "My Crown, you are God's chosen vessel—
+              <br className="hidden md:block" />
               His delight and my greatest pride.
               <span className="block mt-2 text-red-400 font-script text-xl md:text-2xl not-italic">
                 ❤️ With all my love, Wifey
@@ -293,26 +304,32 @@ export default function Index() {
       {/* Main Message Section */}
       <section className="py-16 md:py-24 px-6 bg-ordination-white">
         <div className="max-w-4xl mx-auto">
-          <div className={`text-center md:text-left transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div
+            className={`text-center md:text-left transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          >
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-ordination-text-gold mb-8">
               A New Chapter Begins…
             </h2>
-            
+
             <div className="font-body text-lg md:text-xl leading-relaxed text-gray-800 space-y-6">
+              <p>Today is more than a celebration—it's a sacred moment.</p>
+
               <p>
-                Today is more than a celebration—it's a sacred moment.
+                Your ordination is a divine stamp of approval on everything
+                you've been becoming. A man of faith, discipline, compassion,
+                and purpose. I've watched you grow with grace, and now the world
+                gets to witness the fullness of what God is doing through you.
               </p>
-              
+
               <p>
-                Your ordination is a divine stamp of approval on everything you've been becoming. A man of faith, discipline, compassion, and purpose. I've watched you grow with grace, and now the world gets to witness the fullness of what God is doing through you.
+                I pray for more anointing, more spiritual depth, and more
+                strength to carry the mantle God has placed upon you.
               </p>
-              
-              <p>
-                I pray for more anointing, more spiritual depth, and more strength to carry the mantle God has placed upon you.
-              </p>
-              
+
               <p className="font-semibold">
-                May your voice echo healing. May your hands bless multitudes. May your heart stay anchored in God's love—no matter the weight of the journey.
+                May your voice echo healing. May your hands bless multitudes.
+                May your heart stay anchored in God's love—no matter the weight
+                of the journey.
               </p>
             </div>
           </div>
@@ -340,7 +357,8 @@ export default function Index() {
               Divine Blessings
             </h2>
             <p className="font-body text-xl text-white/80 max-w-2xl mx-auto">
-              Declarations of faith, favor, and divine purpose over your ministry
+              Declarations of faith, favor, and divine purpose over your
+              ministry
             </p>
           </div>
 
@@ -349,7 +367,7 @@ export default function Index() {
             {blessings.map((blessing, index) => (
               <div
                 key={index}
-                className={`group transition-all duration-700 delay-${index * 150} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                className={`group transition-all duration-700 delay-${index * 150} ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               >
                 <div className="relative">
                   {/* Card */}
@@ -358,7 +376,15 @@ export default function Index() {
                     <div className="flex items-center mb-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
                         <span className="text-2xl">
-                          {index === 0 ? '🏆' : index === 1 ? '✨' : index === 2 ? '🔥' : index === 3 ? '🌟' : '🙌'}
+                          {index === 0
+                            ? "🏆"
+                            : index === 1
+                              ? "✨"
+                              : index === 2
+                                ? "🔥"
+                                : index === 3
+                                  ? "🌟"
+                                  : "🙌"}
                         </span>
                       </div>
                       <div className="ml-4 flex-1 h-px bg-gradient-to-r from-yellow-400/50 to-transparent"></div>
@@ -366,7 +392,7 @@ export default function Index() {
 
                     {/* Blessing text */}
                     <blockquote className="font-body text-lg md:text-xl text-gray-800 leading-relaxed">
-                      {blessing.replace(/my ❤/, 'my beloved')}
+                      {blessing.replace(/my ❤/, "my beloved")}
                     </blockquote>
 
                     {/* Bottom accent */}
@@ -395,8 +421,18 @@ export default function Index() {
               </p>
               <div className="mt-4 flex justify-center space-x-2">
                 <span className="text-2xl animate-pulse">🕊️</span>
-                <span className="text-2xl animate-pulse" style={{ animationDelay: '0.5s' }}>✨</span>
-                <span className="text-2xl animate-pulse" style={{ animationDelay: '1s' }}>🤲</span>
+                <span
+                  className="text-2xl animate-pulse"
+                  style={{ animationDelay: "0.5s" }}
+                >
+                  ✨
+                </span>
+                <span
+                  className="text-2xl animate-pulse"
+                  style={{ animationDelay: "1s" }}
+                >
+                  🤲
+                </span>
               </div>
             </div>
           </div>
@@ -406,17 +442,21 @@ export default function Index() {
       {/* Closing Love Note Section */}
       <section className="py-16 md:py-24 px-6 bg-ordination-cream">
         <div className="max-w-3xl mx-auto text-center">
-          <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div
+            className={`transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          >
             <div className="font-body text-lg md:text-xl leading-relaxed text-gray-800 space-y-6 mb-8">
               <p className="font-semibold text-ordination-text-gold">
                 I'm so proud of you.
               </p>
-              
+
               <p>
-                This is just the beginning of what God will do through your obedience, humility, and faith. Your ministry will touch generations. I'm honored to walk beside you through it all.
+                This is just the beginning of what God will do through your
+                obedience, humility, and faith. Your ministry will touch
+                generations. I'm honored to walk beside you through it all.
               </p>
             </div>
-            
+
             <div className="font-script text-2xl md:text-3xl text-ordination-text-gold">
               With all my love, always —<br />
               <span className="text-red-500">Your Wifey ❤</span>
@@ -441,7 +481,7 @@ export default function Index() {
                   src={image}
                   alt={`Ministry moment ${index + 1}`}
                   className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
-                    index === galleryImageIndex ? 'opacity-100' : 'opacity-0'
+                    index === galleryImageIndex ? "opacity-100" : "opacity-0"
                   }`}
                 />
               ))}
@@ -454,8 +494,18 @@ export default function Index() {
               className="absolute left-4 top-1/2 -translate-y-1/2 bg-ordination-gold hover:bg-ordination-gold-dark text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
               aria-label="Previous image"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </button>
 
@@ -464,8 +514,18 @@ export default function Index() {
               className="absolute right-4 top-1/2 -translate-y-1/2 bg-ordination-gold hover:bg-ordination-gold-dark text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
               aria-label="Next image"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
           </div>
@@ -478,8 +538,8 @@ export default function Index() {
                 onClick={() => selectGalleryImage(index)}
                 className={`flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden transition-all duration-300 ${
                   index === galleryImageIndex
-                    ? 'ring-4 ring-ordination-gold scale-110'
-                    : 'ring-2 ring-transparent hover:ring-ordination-gold-light opacity-70 hover:opacity-100'
+                    ? "ring-4 ring-ordination-gold scale-110"
+                    : "ring-2 ring-transparent hover:ring-ordination-gold-light opacity-70 hover:opacity-100"
                 }`}
               >
                 <img
@@ -502,7 +562,8 @@ export default function Index() {
       <footer className="py-12 px-6 bg-ordination-text-gold">
         <div className="max-w-4xl mx-auto text-center">
           <blockquote className="font-body text-xl md:text-2xl text-ordination-white leading-relaxed mb-4 italic">
-            "And I will give you shepherds after my own heart, who will feed you with knowledge and understanding."
+            "And I will give you shepherds after my own heart, who will feed you
+            with knowledge and understanding."
           </blockquote>
           <cite className="font-serif text-lg text-ordination-gold-light">
             — Jeremiah 3:15
@@ -537,7 +598,9 @@ export default function Index() {
                     src={image}
                     alt={`Ministry journey ${index + 1}`}
                     className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${
-                      index === scrollImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+                      index === scrollImageIndex
+                        ? "opacity-100 scale-100"
+                        : "opacity-0 scale-105"
                     }`}
                   />
                 ))}
@@ -554,14 +617,18 @@ export default function Index() {
               {/* Right Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 {scrollSectionImages.map((image, index) => {
-                  const rightIndex = (index + Math.floor(scrollSectionImages.length / 2)) % scrollSectionImages.length;
+                  const rightIndex =
+                    (index + Math.floor(scrollSectionImages.length / 2)) %
+                    scrollSectionImages.length;
                   return (
                     <img
                       key={`right-${index}`}
                       src={scrollSectionImages[rightIndex]}
                       alt={`Ministry journey ${rightIndex + 1}`}
                       className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${
-                        index === scrollImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+                        index === scrollImageIndex
+                          ? "opacity-100 scale-100"
+                          : "opacity-0 scale-105"
                       }`}
                     />
                   );
@@ -582,7 +649,9 @@ export default function Index() {
               <div className="max-w-md mx-auto bg-ordination-white rounded-full h-2 overflow-hidden">
                 <div
                   className="h-full bg-ordination-gold transition-all duration-300 ease-out"
-                  style={{ width: `${((scrollImageIndex + 1) / scrollSectionImages.length) * 100}%` }}
+                  style={{
+                    width: `${((scrollImageIndex + 1) / scrollSectionImages.length) * 100}%`,
+                  }}
                 />
               </div>
               <p className="font-body text-ordination-text-gold mt-2 text-sm">
