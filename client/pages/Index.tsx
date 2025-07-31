@@ -183,29 +183,70 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Gallery Section Placeholder */}
+      {/* Gallery Carousel Section */}
       <section className="py-16 md:py-24 px-6 bg-ordination-white">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ordination-text-gold mb-8">
-            Precious Moments
+          <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ordination-text-gold mb-12">
+            Ministry Memories
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((item) => (
-              <div
-                key={item}
-                className="aspect-[4/3] bg-ordination-cream rounded-lg flex items-center justify-center border-2 border-dashed border-ordination-gold"
+
+          {/* Main Carousel Display */}
+          <div className="relative max-w-4xl mx-auto mb-8">
+            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-2xl">
+              <img
+                src={galleryImages[galleryImageIndex]}
+                alt={`Ministry moment ${galleryImageIndex + 1}`}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            </div>
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevGalleryImage}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-ordination-gold hover:bg-ordination-gold-dark text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+              aria-label="Previous image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            <button
+              onClick={nextGalleryImage}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-ordination-gold hover:bg-ordination-gold-dark text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+              aria-label="Next image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Thumbnail Strip */}
+          <div className="flex justify-center space-x-2 overflow-x-auto pb-4">
+            {galleryImages.map((image, index) => (
+              <button
+                key={index}
+                onClick={() => setGalleryImageIndex(index)}
+                className={`flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden transition-all duration-300 ${
+                  index === galleryImageIndex
+                    ? 'ring-4 ring-ordination-gold scale-110'
+                    : 'ring-2 ring-transparent hover:ring-ordination-gold-light opacity-70 hover:opacity-100'
+                }`}
               >
-                <div className="text-center">
-                  <div className="text-4xl mb-2">📸</div>
-                  <p className="font-body text-ordination-text-gold">
-                    Ordination Photo {item}
-                  </p>
-                  <p className="font-body text-sm text-gray-600 mt-1">
-                    (Upload your photos here)
-                  </p>
-                </div>
-              </div>
+                <img
+                  src={image}
+                  alt={`Thumbnail ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </button>
             ))}
+          </div>
+
+          {/* Image Counter */}
+          <div className="mt-6 font-body text-ordination-text-gold">
+            {galleryImageIndex + 1} of {galleryImages.length}
           </div>
         </div>
       </section>
