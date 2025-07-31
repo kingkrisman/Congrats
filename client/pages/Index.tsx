@@ -348,6 +348,89 @@ export default function Index() {
           </cite>
         </div>
       </footer>
+
+      {/* Scroll-Locked Image Section */}
+      <section
+        id="scroll-section"
+        className="relative h-[400vh] bg-ordination-cream"
+      >
+        <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+          <div className="w-full max-w-7xl mx-auto px-6">
+            {/* Section Title */}
+            <div className="text-center mb-8">
+              <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ordination-text-gold mb-4">
+                Journey of Faith
+              </h2>
+              <p className="font-body text-lg text-gray-700">
+                Scroll to witness the unfolding of His calling
+              </p>
+            </div>
+
+            {/* Side by Side Images */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-[60vh]">
+              {/* Left Image */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                {scrollSectionImages.map((image, index) => (
+                  <img
+                    key={`left-${index}`}
+                    src={image}
+                    alt={`Ministry journey ${index + 1}`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${
+                      index === scrollImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+                    }`}
+                  />
+                ))}
+                <div className="absolute inset-0 bg-gradient-to-t from-ordination-gold/30 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4">
+                  <div className="bg-black/50 backdrop-blur-sm rounded-lg px-3 py-2">
+                    <p className="text-white font-body text-sm">
+                      {scrollImageIndex + 1} of {scrollSectionImages.length}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Image */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                {scrollSectionImages.map((image, index) => {
+                  const rightIndex = (index + Math.floor(scrollSectionImages.length / 2)) % scrollSectionImages.length;
+                  return (
+                    <img
+                      key={`right-${index}`}
+                      src={scrollSectionImages[rightIndex]}
+                      alt={`Ministry journey ${rightIndex + 1}`}
+                      className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${
+                        index === scrollImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+                      }`}
+                    />
+                  );
+                })}
+                <div className="absolute inset-0 bg-gradient-to-t from-ordination-gold/30 via-transparent to-transparent" />
+                <div className="absolute bottom-4 right-4">
+                  <div className="bg-black/50 backdrop-blur-sm rounded-lg px-3 py-2">
+                    <p className="text-white font-body text-sm">
+                      Moments in Ministry
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Progress Indicator */}
+            <div className="mt-8 text-center">
+              <div className="max-w-md mx-auto bg-ordination-white rounded-full h-2 overflow-hidden">
+                <div
+                  className="h-full bg-ordination-gold transition-all duration-300 ease-out"
+                  style={{ width: `${((scrollImageIndex + 1) / scrollSectionImages.length) * 100}%` }}
+                />
+              </div>
+              <p className="font-body text-ordination-text-gold mt-2 text-sm">
+                Scroll to explore the journey
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
