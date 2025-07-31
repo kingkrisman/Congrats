@@ -89,6 +89,30 @@ export default function Index() {
     };
   }, [galleryImages.length]);
 
+  useEffect(() => {
+    // Set up scroll listener for scroll section
+    const handleScroll = () => {
+      const scrollSection = document.getElementById('scroll-section');
+      if (!scrollSection) return;
+
+      const rect = scrollSection.getBoundingClientRect();
+      const sectionHeight = scrollSection.offsetHeight;
+      const windowHeight = window.innerHeight;
+
+      // Calculate scroll progress within the section
+      const scrollStart = -rect.top;
+      const scrollEnd = sectionHeight - windowHeight;
+      const scrollProgress = Math.max(0, Math.min(1, scrollStart / scrollEnd));
+
+      // Calculate which image to show based on scroll progress
+      const imageIndex = Math.floor(scrollProgress * (scrollSectionImages.length - 1));
+      setScrollImageIndex(Math.max(0, Math.min(scrollSectionImages.length - 1, imageIndex)));
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [scrollSectionImages.length]);
+
   const resetGalleryInterval = () => {
     if (galleryInterval) {
       clearInterval(galleryInterval);
