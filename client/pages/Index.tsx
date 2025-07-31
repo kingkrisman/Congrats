@@ -243,19 +243,46 @@ export default function Index() {
         <div className="absolute inset-0 bg-black bg-opacity-30" />
         
         {/* Content */}
-        <div className={`relative z-10 text-center px-6 max-w-4xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-ordination-white mb-6 leading-tight">
-            Congratulations on Your Ordination,
-            <span className="block text-ordination-gold-light text-3xl md:text-5xl lg:text-6xl mt-2">
-              My Crown!
-            </span>
-          </h1>
-          <p className="font-script text-2xl md:text-4xl text-ordination-white mb-4">
-            From Wifey, With Love ❤
-          </p>
-          <p className="font-body text-lg md:text-xl text-ordination-cream italic">
-            "You are God's delight—and my pride."
-          </p>
+        <div className={`relative z-10 text-center px-6 max-w-5xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {/* Decorative crown icon */}
+          <div className="mb-6">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 rounded-full shadow-2xl mb-4">
+              <span className="text-3xl">👑</span>
+            </div>
+          </div>
+
+          {/* Main title with elegant styling */}
+          <div className="relative mb-8">
+            <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+              <span className="block bg-gradient-to-r from-white via-yellow-100 to-white bg-clip-text text-transparent">
+                Celebrating Your Sacred
+              </span>
+              <span className="block text-4xl md:text-6xl lg:text-7xl bg-gradient-to-r from-yellow-300 via-yellow-200 to-yellow-300 bg-clip-text text-transparent font-black tracking-wide">
+                ORDINATION
+              </span>
+            </h1>
+
+            {/* Decorative line */}
+            <div className="flex items-center justify-center my-6">
+              <div className="h-px bg-gradient-to-r from-transparent via-yellow-300 to-transparent w-32"></div>
+              <div className="mx-4 w-2 h-2 bg-yellow-300 rounded-full"></div>
+              <div className="h-px bg-gradient-to-r from-transparent via-yellow-300 to-transparent w-32"></div>
+            </div>
+          </div>
+
+          {/* Personal message section */}
+          <div className="backdrop-blur-sm bg-black/20 rounded-2xl p-8 border border-white/10">
+            <p className="font-script text-2xl md:text-3xl text-yellow-200 mb-4">
+              From Your Loving Wife
+            </p>
+            <blockquote className="font-body text-lg md:text-xl text-white/90 italic leading-relaxed">
+              "My Crown, you are God's chosen vessel—<br className="hidden md:block" />
+              His delight and my greatest pride.
+              <span className="block mt-2 text-red-400 font-script text-xl md:text-2xl not-italic">
+                ❤️ With all my love, Wifey
+              </span>
+            </blockquote>
+          </div>
         </div>
       </div>
 
