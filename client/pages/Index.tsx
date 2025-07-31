@@ -56,14 +56,32 @@ export default function Index() {
 
   useEffect(() => {
     // Set up auto-scroll for gallery every 5 seconds
-    const galleryInterval = setInterval(() => {
+    const interval = setInterval(() => {
       setGalleryImageIndex((prevIndex) =>
         (prevIndex + 1) % galleryImages.length
       );
     }, 5000);
 
-    return () => clearInterval(galleryInterval);
+    setGalleryInterval(interval);
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
   }, [galleryImages.length]);
+
+  const resetGalleryInterval = () => {
+    if (galleryInterval) {
+      clearInterval(galleryInterval);
+    }
+
+    const newInterval = setInterval(() => {
+      setGalleryImageIndex((prevIndex) =>
+        (prevIndex + 1) % galleryImages.length
+      );
+    }, 5000);
+
+    setGalleryInterval(newInterval);
+  };
 
   const blessings = [
     "Victory on all sides, my ❤",
