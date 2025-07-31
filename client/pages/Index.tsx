@@ -270,7 +270,7 @@ export default function Index() {
             {galleryImages.map((image, index) => (
               <button
                 key={index}
-                onClick={() => setGalleryImageIndex(index)}
+                onClick={() => selectGalleryImage(index)}
                 className={`flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden transition-all duration-300 ${
                   index === galleryImageIndex
                     ? 'ring-4 ring-ordination-gold scale-110'
@@ -280,7 +280,7 @@ export default function Index() {
                 <img
                   src={image}
                   alt={`Thumbnail ${index + 1}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-200 hover:scale-105"
                 />
               </button>
             ))}
