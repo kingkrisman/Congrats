@@ -230,11 +230,16 @@ export default function Index() {
           {/* Main Carousel Display */}
           <div className="relative max-w-4xl mx-auto mb-8">
             <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-2xl">
-              <img
-                src={galleryImages[galleryImageIndex]}
-                alt={`Ministry moment ${galleryImageIndex + 1}`}
-                className="w-full h-full object-cover"
-              />
+              {galleryImages.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt={`Ministry moment ${index + 1}`}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
+                    index === galleryImageIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
+                />
+              ))}
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
 
