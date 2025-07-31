@@ -234,7 +234,7 @@ export default function Index() {
               index === currentImageIndex ? 'opacity-100' : 'opacity-0'
             }`}
             style={{
-              backgroundImage: `linear-gradient(45deg, rgba(218, 165, 32, 0.6), rgba(255, 215, 0, 0.7)), url('${image}')`
+              backgroundImage: `url('${image}')`
             }}
           />
         ))}
