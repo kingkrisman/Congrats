@@ -57,6 +57,15 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        ordination: {
+          gold: "hsl(var(--ordination-gold))",
+          "gold-light": "hsl(var(--ordination-gold-light))",
+          "gold-dark": "hsl(var(--ordination-gold-dark))",
+          cream: "hsl(var(--ordination-cream))",
+          "cream-light": "hsl(var(--ordination-cream-light))",
+          white: "hsl(var(--ordination-white))",
+          "text-gold": "hsl(var(--ordination-text-gold))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
