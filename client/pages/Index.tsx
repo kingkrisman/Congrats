@@ -6,6 +6,7 @@ export default function Index() {
   const [galleryImageIndex, setGalleryImageIndex] = useState(0);
   const [galleryInterval, setGalleryInterval] = useState<NodeJS.Timeout | null>(null);
   const [scrollImageIndex, setScrollImageIndex] = useState(0);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const ordinationImages = [
     "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F263fd4a8fa394212a5108b1a72e7b56e?format=webp&width=800",
