@@ -53,6 +53,17 @@ export default function Index() {
     return () => clearInterval(imageInterval);
   }, [ordinationImages.length]);
 
+  useEffect(() => {
+    // Set up auto-scroll for gallery every 5 seconds
+    const galleryInterval = setInterval(() => {
+      setGalleryImageIndex((prevIndex) =>
+        (prevIndex + 1) % galleryImages.length
+      );
+    }, 5000);
+
+    return () => clearInterval(galleryInterval);
+  }, [galleryImages.length]);
+
   const blessings = [
     "Victory on all sides, my ❤",
     "A ministry filled with light, love, and lasting impact",
