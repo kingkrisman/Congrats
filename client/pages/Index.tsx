@@ -61,6 +61,18 @@ export default function Index() {
     "Favor in every season, grace in every step"
   ];
 
+  const nextGalleryImage = () => {
+    setGalleryImageIndex((prevIndex) =>
+      (prevIndex + 1) % galleryImages.length
+    );
+  };
+
+  const prevGalleryImage = () => {
+    setGalleryImageIndex((prevIndex) =>
+      prevIndex === 0 ? galleryImages.length - 1 : prevIndex - 1
+    );
+  };
+
   return (
     <div className="min-h-screen bg-ordination-white">
       {/* Header Section */}
