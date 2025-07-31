@@ -103,6 +103,15 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Ordination theme colors (same for dark mode) */
+    --ordination-gold: 45 100% 51%;
+    --ordination-gold-light: 48 100% 88%;
+    --ordination-gold-dark: 42 100% 40%;
+    --ordination-cream: 47 100% 96%;
+    --ordination-cream-light: 50 100% 98%;
+    --ordination-white: 0 0% 100%;
+    --ordination-text-gold: 38 92% 30%;
   }
 }
 
