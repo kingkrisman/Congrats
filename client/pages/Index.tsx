@@ -42,6 +42,25 @@ export default function Index() {
     "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F10fd279e6e094e0e8ad266c9b8781a54?format=webp&width=800"
   ];
 
+  const scrollSectionImages = [
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F18efd0ba79b74b059d24cba958d868ae?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F7e44696106d74fe6ab226edbb909d8f7?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Fe1cf2a3aea5c4b63a75e8f8df544f8fb?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Fc346b2722850442aabff6407f3c4b022?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F4dc3263f548d44aeacaaccd968786c2e?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Fc1abd56de3a74b20a326738f3a82c520?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Fb10644981b554937b9bad329b4c05e4c?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F52e7d470194448b0a2e78e480ef2a679?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Fbcb26b4233ef41528539644c4ac0d042?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F1c3cc1a730c945f2b8077c8dfad8c8d5?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F715c5dec48e34113aa1efd5c387dc7a2?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F3a81a88de9eb4a238260332503f7e906?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F59122a3253b14ffda22fa41e3e9874a5?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Fd771d0c3042c4cccbf15dadda97eec05?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Fd226b5d7fd6146e09bd40932bfb50014?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Ff582c648ed9145f0b1670a7ad90d6e8e?format=webp&width=800"
+  ];
+
   useEffect(() => {
     setIsVisible(true);
 
