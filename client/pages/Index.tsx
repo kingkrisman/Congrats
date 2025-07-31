@@ -166,6 +166,64 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-ordination-white">
+      {/* Confetti Celebration */}
+      {showConfetti && (
+        <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+          {Array.from({ length: 50 }).map((_, i) => (
+            <div
+              key={i}
+              className={`absolute w-3 h-3 animate-pulse ${
+                i % 4 === 0 ? 'bg-ordination-gold' :
+                i % 4 === 1 ? 'bg-red-500' :
+                i % 4 === 2 ? 'bg-blue-500' : 'bg-green-500'
+              }`}
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `-10px`,
+                animationDelay: `${Math.random() * 2}s`,
+                animationDuration: `${3 + Math.random() * 2}s`,
+                transform: `rotate(${Math.random() * 360}deg)`,
+                animation: `confetti-fall ${3 + Math.random() * 2}s ease-out forwards`
+              }}
+            />
+          ))}
+
+          {/* Heart shapes for extra celebration */}
+          {Array.from({ length: 10 }).map((_, i) => (
+            <div
+              key={`heart-${i}`}
+              className="absolute text-red-500 text-2xl animate-bounce"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `-50px`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${4 + Math.random() * 2}s`,
+                animation: `confetti-fall ${4 + Math.random() * 2}s ease-out forwards`
+              }}
+            >
+              ❤️
+            </div>
+          ))}
+
+          {/* Celebration emojis */}
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div
+              key={`emoji-${i}`}
+              className="absolute text-3xl"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `-50px`,
+                animationDelay: `${Math.random() * 2.5}s`,
+                animationDuration: `${3.5 + Math.random() * 1.5}s`,
+                animation: `confetti-fall ${3.5 + Math.random() * 1.5}s ease-out forwards`
+              }}
+            >
+              {i % 3 === 0 ? '🎉' : i % 3 === 1 ? '✨' : '🙏'}
+            </div>
+          ))}
+        </div>
+      )}
+
       {/* Header Section */}
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background Images Slideshow */}
