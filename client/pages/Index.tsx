@@ -316,23 +316,85 @@ export default function Index() {
       </section>
 
       {/* Blessings & Declarations Section */}
-      <section className="py-16 md:py-24 px-6 bg-ordination-gold">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ordination-white mb-12">
-            Blessings & Declarations
-          </h2>
-          
-          <div className="space-y-6">
+      <section className="py-16 md:py-24 px-6 bg-gradient-to-br from-ordination-gold via-yellow-500 to-orange-400 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-40 h-40 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-white rounded-full blur-2xl"></div>
+        </div>
+
+        <div className="max-w-6xl mx-auto relative z-10">
+          {/* Section header */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-12 h-px bg-white/50"></div>
+              <span className="text-2xl">🙏</span>
+              <div className="w-12 h-px bg-white/50"></div>
+            </div>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mb-4">
+              Divine Blessings
+            </h2>
+            <p className="font-body text-xl text-white/80 max-w-2xl mx-auto">
+              Declarations of faith, favor, and divine purpose over your ministry
+            </p>
+          </div>
+
+          {/* Blessings grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {blessings.map((blessing, index) => (
               <div
                 key={index}
-                className={`transition-all duration-700 delay-${index * 200} ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}
+                className={`group transition-all duration-700 delay-${index * 150} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               >
-                <p className="font-body text-xl md:text-2xl text-ordination-white leading-relaxed">
-                  ✨ {blessing}
-                </p>
+                <div className="relative">
+                  {/* Card */}
+                  <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-2xl border border-white/20 hover:shadow-3xl hover:scale-105 transition-all duration-300 group-hover:bg-white">
+                    {/* Icon */}
+                    <div className="flex items-center mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
+                        <span className="text-2xl">
+                          {index === 0 ? '🏆' : index === 1 ? '✨' : index === 2 ? '🔥' : index === 3 ? '🌟' : '🙌'}
+                        </span>
+                      </div>
+                      <div className="ml-4 flex-1 h-px bg-gradient-to-r from-yellow-400/50 to-transparent"></div>
+                    </div>
+
+                    {/* Blessing text */}
+                    <blockquote className="font-body text-lg md:text-xl text-gray-800 leading-relaxed">
+                      {blessing.replace(/my ❤/, 'my beloved')}
+                    </blockquote>
+
+                    {/* Bottom accent */}
+                    <div className="mt-6 pt-4 border-t border-yellow-200">
+                      <div className="flex justify-end">
+                        <span className="text-2xl text-yellow-500">✨</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card glow effect */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-yellow-400/20 to-orange-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                </div>
               </div>
             ))}
+          </div>
+
+          {/* Central blessing highlight */}
+          <div className="mt-12 text-center">
+            <div className="inline-block bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+              <p className="font-script text-2xl md:text-3xl text-white mb-2">
+                "May your ministry be a beacon of hope,
+              </p>
+              <p className="font-script text-2xl md:text-3xl text-white">
+                and your heart forever anchored in His love"
+              </p>
+              <div className="mt-4 flex justify-center space-x-2">
+                <span className="text-2xl animate-pulse">🕊️</span>
+                <span className="text-2xl animate-pulse" style={{ animationDelay: '0.5s' }}>✨</span>
+                <span className="text-2xl animate-pulse" style={{ animationDelay: '1s' }}>🤲</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
