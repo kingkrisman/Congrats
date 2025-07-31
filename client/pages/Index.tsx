@@ -2,10 +2,29 @@ import { useEffect, useState } from "react";
 
 export default function Index() {
   const [isVisible, setIsVisible] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const ordinationImages = [
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F263fd4a8fa394212a5108b1a72e7b56e?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Fbb6e2c21cdb94916b9f6c55cbb4e5b78?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F6852d88a060c4755a95a63f8bbafef80?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F26b4938cf1ec497d8fafaafafdcc682a?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F83ed3c26efdb41a1be330dc4f4f78b41?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F73ef989db23f496bb3bbaed6c8f97003?format=webp&width=800"
+  ];
 
   useEffect(() => {
     setIsVisible(true);
-  }, []);
+
+    // Set up image rotation every 2 seconds
+    const imageInterval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        (prevIndex + 1) % ordinationImages.length
+      );
+    }, 2000);
+
+    return () => clearInterval(imageInterval);
+  }, [ordinationImages.length]);
 
   const blessings = [
     "Victory on all sides, my ❤",
