@@ -65,6 +65,12 @@ export default function Index() {
   useEffect(() => {
     setIsVisible(true);
 
+    // Trigger confetti celebration on page load
+    setShowConfetti(true);
+    const confettiTimer = setTimeout(() => {
+      setShowConfetti(false);
+    }, 4000); // Show confetti for 4 seconds
+
     // Set up image rotation every 2 seconds
     const imageInterval = setInterval(() => {
       setCurrentImageIndex((prevIndex) =>
@@ -72,7 +78,10 @@ export default function Index() {
       );
     }, 2000);
 
-    return () => clearInterval(imageInterval);
+    return () => {
+      clearInterval(imageInterval);
+      clearTimeout(confettiTimer);
+    };
   }, [ordinationImages.length]);
 
   useEffect(() => {
