@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export default function Index() {
   const [isVisible, setIsVisible] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [galleryImageIndex, setGalleryImageIndex] = useState(0);
 
   const ordinationImages = [
     "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F263fd4a8fa394212a5108b1a72e7b56e?format=webp&width=800",
@@ -11,6 +12,32 @@ export default function Index() {
     "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F26b4938cf1ec497d8fafaafafdcc682a?format=webp&width=800",
     "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F83ed3c26efdb41a1be330dc4f4f78b41?format=webp&width=800",
     "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F73ef989db23f496bb3bbaed6c8f97003?format=webp&width=800"
+  ];
+
+  const galleryImages = [
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Fa334645c90b34065a4d6527297b16f60?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F200d6c318c56435db76ffa626ab43631?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F52e7c78ebab24a59a48899f48afc2b21?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F7b362d95de664cd6958133da2d5ba4ed?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Fc33c965e93784e94ab9f9b862324cadb?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Fd3e11e77b802430590645129c99f2ede?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F1448211797804a729f99b3ec043cfa6b?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F7e35cea894ae4d8690259723cc436c3e?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F1f29ee12cb4245f5bcc36fb498551ecf?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F5287834e6c17412aac63e4845e0f98e8?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Fe106378ca9554bc5b576b6f5f5fd951d?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F949ec174d41d47e5b4831b1f4dce52db?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Fc933edcc726f4e65920a3b5e2f144cdb?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F0892de093a444c28b752c543ce6830d3?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Fd41d079e4def4ce7a06756f8a8ebff48?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Fb131dba85bde4f2987145430be7dee48?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F3be169a37ef74de8ae795ca820bc9682?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F9adff922446f4008af5b33c1f8432d26?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F0e3c1386efae4ebb836f90d0bbbefe0d?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F97fcc01bee3c43b48dadc84dc0adf031?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Ffd1a103d7df4424694ce219a59274d01?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2Ffc096ad2bc7f4b46979f2283a15202ab?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2Faeee31fcf1114fceb0dea40aa0430358%2F10fd279e6e094e0e8ad266c9b8781a54?format=webp&width=800"
   ];
 
   useEffect(() => {
