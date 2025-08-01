@@ -269,7 +269,7 @@ export default function Index() {
           <div className="relative mb-8">
             <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
               <span className="block bg-gradient-to-r from-white via-yellow-100 to-white bg-clip-text text-transparent">
-                Celebrating Your Sacred
+                Celebrating Your
               </span>
               <span className="block text-4xl md:text-6xl lg:text-7xl bg-gradient-to-r from-yellow-300 via-yellow-200 to-yellow-300 bg-clip-text text-transparent font-black tracking-wide">
                 ORDINATION
